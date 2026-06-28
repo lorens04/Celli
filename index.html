@@ -130,7 +130,7 @@
         function startMusic() {
             if (!musicStarted) {
                 bgMusic.volume = 0.5; // Atur volume 50%
-                bgMusic.currentTime = 1; // Langsung lompat ke detik 52 (bagian reff)
+                bgMusic.currentTime = 4; // Langsung lompat ke detik 52 (bagian reff)
                 bgMusic.play().then(() => {
                     musicStarted = true;
                     console.log("Musik dimulai.");
@@ -201,7 +201,7 @@
 
             // Siapkan link WhatsApp (62 adalah pengganti 0)
             const noWA = "6281996182925"; 
-            const pesanWA = encodeURIComponent("jemput aku ya sayangg, jam 10.00 ♥️");
+            const pesanWA = encodeURIComponent("jemput aku ya sayangg, jam 10.00 🥰♥️");
             const linkWA = `https://wa.me/${noWA}?text=${pesanWA}`;
 
             // Ubah tampilan card menggunakan ID yang lebih aman dipanggil JavaScript
