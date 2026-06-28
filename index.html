@@ -145,7 +145,7 @@
         function startMusic() {
             if (!musicStarted) {
                 bgMusic.volume = 0.5; // Atur volume 50%
-                bgMusic.currentTime = 06; // Langsung lompat ke detik 52 (bagian reff)
+                bgMusic.currentTime = 0; // Langsung lompat ke detik 52 (bagian reff)
                 bgMusic.play().then(() => {
                     musicStarted = true;
                     console.log("Musik dimulai.");
