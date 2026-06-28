@@ -26,7 +26,6 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
         
-        /* STREAMING_CHUNK:Mengatur gaya dan transisi untuk tombol interaktif... -->
         /* Default transition untuk pergerakan halus */
         #btn-tidak {
             transition: all 0.2s ease-out;
@@ -58,7 +57,6 @@
             transform: none;
         }
 
-        /* STREAMING_CHUNK:Menyiapkan animasi jatuhnya hati di latar belakang... -->
         /* Animasi Love Jatuh di Background */
         @keyframes fall {
             0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.8; }
@@ -76,8 +74,8 @@
 
 <body class="min-h-screen flex flex-col items-center justify-center p-4">
 
-    <!-- Container Utama -->
-    <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-2xl text-center max-w-md w-full border-4 border-pink-300 relative z-10">
+    <!-- Container Utama ditambahkan id="main-card" -->
+    <div id="main-card" class="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-2xl text-center max-w-md w-full border-4 border-pink-300 relative z-10">
         
         <!-- Floating Hearts -->
         <div class="flex justify-center gap-4 mb-6">
@@ -132,7 +130,7 @@
         function startMusic() {
             if (!musicStarted) {
                 bgMusic.volume = 0.5; // Atur volume 50%
-                bgMusic.currentTime = 0; // Langsung lompat ke detik 52 (bagian reff)
+                bgMusic.currentTime = 1; // Langsung lompat ke detik 52 (bagian reff)
                 bgMusic.play().then(() => {
                     musicStarted = true;
                     console.log("Musik dimulai.");
@@ -206,21 +204,24 @@
             const pesanWA = encodeURIComponent("jemput aku ya sayangg, jam 10.00 ♥️");
             const linkWA = `https://wa.me/${noWA}?text=${pesanWA}`;
 
-            // Ubah tampilan card
-            const card = document.querySelector('.bg-white\\/80');
-            card.innerHTML = `
-                <div class="text-6xl mb-4">🥰</div>
-                <h1 class="text-3xl text-pink-600 mb-4 font-bold">Yeyyy! Asikkk! 🎉</h1>
-                <p class="text-xl text-gray-700 font-semibold mb-2">See you tomorrow, sayang! ❤️</p>
-                <p class="text-md text-gray-500 mb-8">Jangan lupa kabari aku yaa 🚗💨</p>
-                
-                <!-- Tombol Pindah ke WA -->
-                <a href="${linkWA}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-110 transition duration-300 text-lg w-full max-w-[250px] mx-auto">
-                    Pindah ke WA 💬
-                </a>
-            `;
+            // Ubah tampilan card menggunakan ID yang lebih aman dipanggil JavaScript
+            const card = document.getElementById('main-card');
             
-            createConfetti();
+            if (card) {
+                card.innerHTML = `
+                    <div class="text-6xl mb-4">🥰</div>
+                    <h1 class="text-3xl text-pink-600 mb-4 font-bold">Yeyyy! Asikkk! 🎉</h1>
+                    <p class="text-xl text-gray-700 font-semibold mb-2">See you tomorrow, sayang! ❤️</p>
+                    <p class="text-md text-gray-500 mb-8">Jangan lupa kabari aku yaa 🚗💨</p>
+                    
+                    <!-- Tombol Pindah ke WA -->
+                    <a href="${linkWA}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-110 transition duration-300 text-lg w-full max-w-[250px] mx-auto">
+                        Pindah ke WA 💬
+                    </a>
+                `;
+                
+                createConfetti();
+            }
         });
 
         // Fungsi Confetti Emoji
